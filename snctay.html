@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社SANCTUARY DESIGNS | Official Site</title>
+    <style>
+        /* ベーススタイル */
+        body, html { 
+            margin: 0; padding: 0; 
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background: #050505; color: #f0f0f0; 
+            scroll-behavior: smooth; overflow-x: hidden;
+        }
+
+        /* --- パスコード画面のスタイル --- */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        #lock-screen input {
+            background: transparent; border: none; border-bottom: 1px solid #333;
+            color: #fff; text-align: center; font-size: 1.2rem; padding: 10px;
+            letter-spacing: 5px; outline: none; width: 250px; margin-top: 20px;
+        }
+        #lock-screen p { font-size: 0.8rem; color: #666; letter-spacing: 2px; }
+
+        /* コンテンツ（最初は隠しておく） */
+        #main-content { display: none; }
+
+        /* ヘッダー・メインビジュアル等は前回のカッコいいデザインを継承 */
+        header { 
+            position: fixed; width: 100%; padding: 25px 50px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px); 
+            z-index: 100; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-weight: bold; letter-spacing: 4px; font-size: 1.1rem; }
+        nav a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.8rem; opacity: 0.6; }
+        
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=2000'); 
+            background-size: cover; background-position: center; text-align: center; 
+        }
+        .hero h1 { font-size: 3.5rem; letter-spacing: 8px; font-weight: 200; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; letter-spacing: 5px; }
+
+        section { padding: 100px 20px; max-width: 850px; margin: 0 auto; line-height: 2; }
+        h2 { font-size: 1.6rem; margin-bottom: 50px; letter-spacing: 3px; text-align: center; font-weight: 300; }
+        h2::after { content: ""; display: block; width: 20px; height: 1px; background: #fff; margin: 20px auto; }
+        .content-text { text-align: center; color: #ccc; margin-bottom: 40px; }
+
+        .member-grid { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 40px; }
+        .member-card { text-align: center; padding: 20px; min-width: 250px; }
+        .title { font-size: 0.8rem; color: #888; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        .name { font-size: 1.4rem; letter-spacing: 3px; }
+
+        .recruit-container { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); padding: 40px; }
+        .recruit-table { width: 100%; border-collapse: collapse; }
+        .recruit-table th, .recruit-table td { padding: 25px 15px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .recruit-table th { width: 30%; color: #888; font-size: 0.85rem; }
+        
+        footer { padding: 80px 20px; text-align: center; font-size: 0.7rem; color: #444; }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <p>ENTER ACCESS CODE</p>
+        <input type="password" id="pass-input" oninput="checkPass()">
+    </div>
+
+    <div id="main-content">
+        <header>
+            <div class="logo">SANCTUARY DESIGNS</div>
+            <nav>
+                <a href="#about">ABOUT</a>
+                <a href="#leadership">LEADERSHIP</a>
+                <a href="#recruit">RECRUIT</a>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <h1>SANCTUARY DESIGNS</h1>
+            <p>世界に、美しい聖域を。</p>
+        </div>
+
+        <section id="about">
+            <h2>ABOUT US</h2>
+            <div class="content-text">
+                私たちは、まだ誰も見たことのない「聖域」を創造するクリエイティブチームです。<br>
+                一つひとつの物語、一人のキャラクター、そのすべてが唯一無二の輝きを放つよう、<br>
+                細部に至るまで純度の高い設計を追求しています。
+            </div>
+        </section>
+
+        <section id="leadership">
+            <h2>LEADERSHIP</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <span class="title">代表取締役社長 / CEO</span>
+                    <div class="name">ゆずみなづき</div>
+                </div>
+                <div class="member-card">
+                    <span class="title">取締役副社長 / COO</span>
+                    <div class="name">柴田ボブ</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recruit">
+            <h2>RECRUIT</h2>
+            <div class="recruit-container">
+                <table class="recruit-table">
+                    <tr><th>募集職種</th><td>ゲームクリエイター / 制作統括アシスタント</td></tr>
+                    <tr><th>業務内容</th><td>新規タイトルの世界観構築サポート、キャラクター制作の進行管理。<br>作品の完成度を10へと引き上げるための、あらゆるクリエイティブワーク。</td></tr>
+                    <tr><th>求める人物像</th><td>「聖域」のビジョンに共感し、物語の細部にまで愛を注げる方。<br>自らの手で、世界をより美しく形作ることに喜びを感じる方。</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <footer>&copy; 2026 SANCTUARY DESIGNS Inc. All Rights Reserved.</footer>
+    </div>
+
+    <script>
+        function checkPass() {
+            var pass = document.getElementById("pass-input").value;
+            // パスコードの設定：ここでは 'sanctuary'
+            if (pass === 'sanctuary') {
+                document.getElementById("lock-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
